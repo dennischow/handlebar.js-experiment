@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HandlebarJS - Experiment</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="assets/css/app.css" rel="stylesheet" type="text/css" media="screen"></link>
+</head>
+<body>
+
+<!-- Page View Starts -->
+<div id="page-view">
+    <div class="container">
+
+        <div class="heading-row">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="heading-title">Templating Engine - <small>(Dennis Chow)</small> <button class="btn btn-primary ui-btn-update pull-right">Update</button></h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- http://stackoverflow.com/questions/11884960/how-to-get-index-in-handlebars-each-helper -->
+        <div class="article-entries">
+
+            <script id="entry-template" type="text/x-handlebars-template">
+            <div class="row">
+
+                {{#entries}} {{!-- This calling an array isnide the dataContext object--}}
+                <div class="entry clearfix {{alternative @index}}" data-id="{{entry_id}}">
+                    
+                    {{#if title}}
+                    <div class="col-sm-4">
+                        <p class="count">{{ math @index }}/{{ total }} {{#if @first}}: first-item{{/if}}{{#if @last}}: last-item{{/if}}</p>
+                        {{!--<div class="thumb-img">
+                            <img class="img-responsive" src="{{thumb_image_hotlink}}" alt="">
+                        </div>--}}
+                        <h3 class="heading">{{ title }}</h3>
+                    </div>
+                    {{/if}}
+
+                    {{#if blog_body}}
+                    <div class="col-sm-8">
+                        <div class="body">
+                            <p>{{{short_text}}}</p>
+                        </div>
+                        <p class="btn-container">
+                            <a class="btn btn-info" href="{{fc-news-url}}{{url_title}}" target="_blank">Read More</a>
+                        </p>
+                    </div>
+                    {{/if}}
+
+                </div>
+                {{/entries}}
+
+            </div>
+            </script>
+                
+        </div>
+
+    </div>
+</div>
+<!-- Page View Ends -->
+
+<script type="text/javascript" src="assets/libs/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="assets/libs/handlebars-v3.0.3.js"></script>
+<script type="text/javascript" src="assets/js/app.js"></script>
+</body>
+</html>
